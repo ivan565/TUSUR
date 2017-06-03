@@ -1,0 +1,11 @@
+page-task-list .active {
+  text-decoration: line-through;
+}
+
+page-task-list span {
+  cursor: pointer;
+}
+
+page-task-list ion-list {
+  padding: 10px 5px;
+}
