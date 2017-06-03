@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Список задач</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list no-lines>
+    <ion-grid *ngFor="let task of tasks;">
+      <ion-row>
+        <ion-col col-11 (click)="goToTaskDetail(task)">
+          <span>{{ task.task_name }}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="tasks.length == 0 && loaded">
+      <ion-row>
+        <ion-col col-11>
+          <span>У инженера нет тасков</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>

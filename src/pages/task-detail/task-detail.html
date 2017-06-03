@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ task.task_name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Название</ion-label>
+        <ion-input [(ngModel)]="taskEdit.task_name"
+                   [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Описание</ion-label>
+        <ion-textarea [(ngModel)]="taskEdit.task_description"
+                      [ngModelOptions]="{standalone: true}"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Дата завершения</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY"
+                      [(ngModel)]="taskEdit.start_time"
+                      [ngModelOptions]="{standalone: true}"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Фотоотчет</ion-label>
+        <ion-checkbox (click)="onPhotoChoose()"
+                      [(ngModel)]="taskEdit.photo_required"
+                      [ngModelOptions]="{standalone: true}"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <ion-row *ngIf="taskEdit.photo_required">
+      <ion-col>
+        <img [src]="base64Image" *ngIf="base64Image" width="220" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button (click)="onSaveTask()" type="submit" block>Сохранить</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button (click)="goToList()" color="danger" block>Отмена</button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+
